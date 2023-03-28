@@ -1,4 +1,7 @@
 programa {
+
+  inclua biblioteca Matematica --> math
+
   funcao inicio() {
 
     real x, y, valor    
@@ -17,7 +20,7 @@ programa {
 
   funcao calcularArea(real x, real y, real valor) {
     real area = x * y
-    real valorTotal = area * valor
+    real valorTotal = math.arredondar(area * valor, 2)
     retorne ("O valor do terreno com metragem de " + area + " M² é de R$ " + valorTotal)
   }
 }
