@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class MainPessoa {
     public static void main(String[] args){
 
         // Cria um objeto para receber dados do usuário
@@ -13,13 +13,20 @@ public class Main {
         System.out.println("Insira sua idade: ");
         // Atribui o dado inserido pelo usuário para a variável "idade"
         Integer idade = sc.nextInt();
+        System.out.println("Insira o CPF");
+        String cpf = sc.next();
+        System.out.println("Insira a cidade de nascimento: ");
+        String cidadeNascimento = sc.next();
+        System.out.println("Qual o cargo da pessoa? ");
+        String cargo = sc.next();
+        System.out.println("E qual a empresa?");
+        String empresa = sc.next();
 
         // Cria uma instância da classe-objeto Pessoa com o nome "p" e atribui as variáveis "nome" e "idade"
-        Pessoa p = new Pessoa(nome, idade);
+        Funcionário f = new Funcionário(nome, idade, cpf, cidadeNascimento, cargo, empresa);
 
         // O objeto "p" da classe-objeto Pessoa tem acesso aos seus métodos
-        p.saudacao(nome);
-        p.verificaIdade(idade);
+        System.out.println(f.exibeDados());
 
         sc.close();
         
