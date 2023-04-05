@@ -27,19 +27,29 @@ public class Usuario {
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
     }
-    
+
+    // ADICIONA UM LIVRO NA LISTA
     public void adicionaLivroEmprestado(Livro livro) {
-        livrosEmprestados.add(livro);        
+        livrosEmprestados.add(livro);
     }
 
+    // REMOVE UM LIVRO DA LISTA
     public void removeLivroEmprestado(Livro livro){
         livrosEmprestados.remove(livro);
     }
 
-    public boolean verificaLivroEmprestado(Integer livro){
-        if(livrosEmprestados.contains(livro)){
-            return true;
-        } else return false;
+    // IMPRIME UMA LISTA CONTENDO TODOS OS LIVROS QUE ESTÃO EMPRESTADOS PARA O USUARIO
+    public void listaLivrosEmprestadosUsuario(){
+        System.out.println("Livros emprestados para o usuario: " + getNomeUsuario());
+        for(Livro l : livrosEmprestados){
+            System.out.println("Nome: " + l.getNomeLivro());
+        }
+        System.out.println("---");
     }
-    
+
+    // VERIFICA SE O LIVRO RECEBIDO COMO PARÂMETRO ESTÁ INSERIDO NA LISTA livrosEmprestados
+    public boolean verificaLivroEmprestado(Livro livro){
+        return livrosEmprestados.contains(livro);
+    }
+
 }
