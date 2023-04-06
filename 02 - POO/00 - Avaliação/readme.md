@@ -23,15 +23,14 @@
 -- model : *String*
 -- manufacturer : *String*
 -- plate : *String*
--- type: *char*
--- time : *Integer*
+-- type: *String*
 -- parked : *boolean*
 
 - **Atríbutos do Construtor**:
--- Sem construtor, pois será uma classe abstrata
+-- Construtor padrão
 
 - **Métodos**:
---  parkState()
+--  Sem métodos
 
 ## INTERFACE PARKINGLOTINTERFACE
 - **Métodos**

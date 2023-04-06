@@ -4,7 +4,7 @@ public class Vehicle {
     private String model;
     private String manufacturer;
     private String plate;
-    private char type;
+    private String type;
     private boolean parked = false;
 
     public Vehicle(){}
@@ -29,11 +29,11 @@ public class Vehicle {
         return plate;
     }
 
-    public char getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(char type) {
+    public void setType(String type) {
         this.type = type;
     } 
 
