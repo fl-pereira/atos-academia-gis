@@ -2,8 +2,7 @@ public class Car extends Vehicle{
     
     private Double weight;
 
-    public Car(Double weight){
-        super();
+    public Car(){
         this.weight = weight;
     }
 

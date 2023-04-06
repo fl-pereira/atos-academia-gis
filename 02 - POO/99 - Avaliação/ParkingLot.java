@@ -29,6 +29,42 @@ public class ParkingLot{
         this.priceHour = priceHour;
     }
 
-    
-    
+    public void prepareToPark(Vehicle vehicle){
+        vehiclesToPark.add(vehicle);
+    }
+
+    public  void removePrepareToPark(Vehicle vehicle){
+        vehiclesToPark.remove(vehicle);
+    }
+
+    public void park(Vehicle vehicle){
+        parkingSpaces.add(vehicle);
+    }
+
+    public void leave(Vehicle vehicle){
+        parkingSpaces.remove(vehicle);
+    }
+
+    public Double totalValue(Double priceHour, Integer time){
+        return priceHour * time;
+    }
+
+    public boolean verifyIfAvailableToPark(String plate){
+        boolean isAvailable = false;
+        for(Vehicle v : vehiclesToPark){
+            if(v.getPlate().contains(plate)){
+                isAvailable = true;
+            }
+        }
+        return isAvailable;
+    }
+
+    public boolean verifyIfParked(Vehicle vehicle){
+        boolean isParked = false;
+        for(Vehicle v : parkingSpaces){
+            isParked = parkingSpaces.contains(v.getPlate());
+        }
+        return isParked;
+    }
+
 }

@@ -1,11 +1,13 @@
 
-abstract class Vehicle {
+public class Vehicle {
 
     private String model;
     private String manufacturer;
     private String plate;
     private char type;
-    private boolean parked;
+    private boolean parked = false;
+
+    public Vehicle(){}
 
     public String getModel() {
         return model;
@@ -44,6 +46,6 @@ abstract class Vehicle {
     }
     public void setParked(boolean parked) {
         this.parked = parked;
-    }   
+    }
 
 }

@@ -2,8 +2,7 @@ public class Motorcycle extends Vehicle{
     
     private Double engineCapacity;
 
-    public Motorcycle(Double engineCapacity){
-        super();
+    public Motorcycle(){
         this.engineCapacity = engineCapacity;
     }
 
