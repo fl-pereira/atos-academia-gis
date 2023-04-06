@@ -8,7 +8,7 @@
 -- priceHour : *Double*
 
 - **Atríbutos do Construtor**:
--- Todos
+-- *name* e *priceHour*
 
 - **Métodos**:
 -- park()
@@ -23,6 +23,7 @@
 -- model : *String*
 -- manufacturer : *String*
 -- plate : *String*
+-- type: *char*
 -- time : *Integer*
 -- parked : *boolean*
 
@@ -34,7 +35,7 @@
 
 ## CLASSE CAR
 - **Atributos**:
--- type: *Char*
+-- weight: *Double*
 
 - **Atríbutos do Construtor**:
 -- *model*, *manufacturer*, *plate* e estado em *parked*
@@ -43,7 +44,7 @@
 
 ## CLASSE MOTORCYCLE
 - **Atributos**:
--- type: *Char*
+-- engineCapacity: *Double*
 
 - **Atríbutos do Construtor**:
 -- *model*, *manufacturer*, *plate* e estado em *parked*
