@@ -1,5 +1,5 @@
 public interface ParkingLotInterface{
 
-    public Double totalValue(Double priceHour, Integer time);
+    public Double totalValue(Integer time);
 
 }

@@ -1,11 +1,12 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLot implements ParkingLotInterface {
 
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     private String name;
-    private List<Vehicle> parkingSpaces = new ArrayList<>();
-    private List<Vehicle> vehiclesToPark = new ArrayList<>();
+    private List<Vehicle> listVehicle = new ArrayList<>();
     private Double priceHour;
 
     public ParkingLot(String name, Double priceChour){
@@ -29,42 +30,71 @@ public class ParkingLot implements ParkingLotInterface {
         this.priceHour = priceHour;
     }
 
-    public void prepareToPark(Vehicle vehicle){
-        vehiclesToPark.add(vehicle);
+    public void add(Vehicle vehicle){
+        listVehicle.add(vehicle);
     }
 
-    public  void removePrepareToPark(Vehicle vehicle){
-        vehiclesToPark.remove(vehicle);
-    }
-
-    public void park(Vehicle vehicle){
-        parkingSpaces.add(vehicle);
-    }
-
-    public void leave(Vehicle vehicle){
-        parkingSpaces.remove(vehicle);
-    }
-
-    public boolean verifyIfAvailableToPark(String plate){
-        boolean isAvailable = false;
-        for(Vehicle v : vehiclesToPark){
+    public void park(String plate){
+        for (Vehicle v : listVehicle){
             if(v.getPlate().contains(plate)){
-                isAvailable = true;
+                if(!v.isParked()){
+                    v.setParked(true);
+                    System.out.println("Veicúlo com placa " + v.getPlate() + " estacionado com sucesso.");
+                }
+                else System.out.println("Veículo já estacionado.");
             }
         }
-        return isAvailable;
     }
 
-    public boolean verifyIfParked(Vehicle vehicle){
-        boolean isParked = false;
-        for(Vehicle v : parkingSpaces){
-            isParked = parkingSpaces.contains(v.getPlate());
+    public void leave(String plate){
+        for (Vehicle v : listVehicle){
+            if(v.getPlate().contains(plate)){
+                if(v.isParked()){
+                    v.setParked(false);
+                    System.out.println("Veicúlo com placa " + v.getPlate() + " saindo do estacionamento.");
+                }
+                else System.out.println("Veículo não está mais aqui.");
+            }
         }
-        return isParked;
+    }
+
+    public void getAllPlatesToPark(){
+        for(Vehicle v : listVehicle){
+            if(!v.isParked()){
+                System.out.println("Placa: " + v.getPlate());
+            }
+        }
+    }
+    public void getAllParkedPlates(){
+        for(Vehicle v : listVehicle){
+            if(v.isParked()){
+                System.out.println("Placa: " + v.getPlate());
+            }
+        }
+    }
+
+    public Integer getIndexOfVehicle(String plate){
+        Integer indexOf = 0;
+        for(Vehicle v : listVehicle){
+            if(v.getPlate().contains(plate)){
+                indexOf = listVehicle.indexOf(v);
+            }
+        }
+        return indexOf;
+    }
+
+    public void printMsg(String plate, Integer time){
+        for(Vehicle v : listVehicle) {
+            if(v.getPlate().contains(plate)) {
+                Integer numVaga = getIndexOfVehicle(v.getPlate());
+                Double totalValue = totalValue(time);
+                System.out.println("O veículo com placa " + v.getPlate() + " estacionado na vaga " + numVaga + " irá pagar R$" + df.format(totalValue));
+            }
+        }
     }
 
     @Override
-    public Double totalValue(Double priceHour, Integer time) {
+    public Double totalValue(Integer time) {
         return priceHour * time;
     }
 

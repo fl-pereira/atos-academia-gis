@@ -7,7 +7,12 @@ public class Vehicle {
     private String type;
     private boolean parked = false;
 
-    public Vehicle(){}
+    public Vehicle(String type, String model, String manufacturer, String plate){
+        this.type = type;
+        this.model = model;
+        this.manufacturer = manufacturer;
+        this.plate = plate;
+    }
 
     public String getModel() {
         return model;
