@@ -5,6 +5,7 @@ import java.util.List;
 public class ParkingLot implements ParkingLotInterface {
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
+    
     private String name;
     private List<Vehicle> listVehicle = new ArrayList<>();
     private Double priceHour;
@@ -59,6 +60,7 @@ public class ParkingLot implements ParkingLotInterface {
     }
 
     public void getAllPlatesToPark(){
+        // LISTANDO TODAS AS PLACAS DE VEÍCULOS PRONTOS PARA ESTACIONAR
         for(Vehicle v : listVehicle){
             if(!v.isParked()){
                 System.out.println("Placa: " + v.getPlate());
@@ -66,6 +68,7 @@ public class ParkingLot implements ParkingLotInterface {
         }
     }
     public void getAllParkedPlates(){
+        // LISTANDO TODAS AS PLACAS DE VEÍCULOS ESTACIONADOS
         for(Vehicle v : listVehicle){
             if(v.isParked()){
                 System.out.println("Placa: " + v.getPlate());
@@ -74,21 +77,23 @@ public class ParkingLot implements ParkingLotInterface {
     }
 
     public Integer getIndexOfVehicle(String plate){
+        // CRIEI UM MÉTODO PARA PEGAR A POSIÇÃO DENTRO DA LIST E SOMEI +1 PARA NÃO INICIAR EM ZERO
         Integer indexOf = 0;
         for(Vehicle v : listVehicle){
             if(v.getPlate().contains(plate)){
-                indexOf = listVehicle.indexOf(v);
+                indexOf = listVehicle.indexOf(v) + 1;
             }
         }
         return indexOf;
     }
 
     public void printMsg(String plate, Integer time){
+        // MÉTODO PARA IMPRIMIR A MENSAGEM FINAL
         for(Vehicle v : listVehicle) {
             if(v.getPlate().contains(plate)) {
                 Integer numVaga = getIndexOfVehicle(v.getPlate());
                 Double totalValue = totalValue(time);
-                System.out.println("O veículo com placa " + v.getPlate() + " estacionado na vaga " + numVaga + " irá pagar R$" + df.format(totalValue));
+                System.out.println("O veículo de PLACA '" + v.getPlate() + "' e TIPO '" + v.getType() + "', ocupou a vaga '" + numVaga + "' por " + time + " horas e pagou o valor de R$" + df.format(totalValue));
             }
         }
     }

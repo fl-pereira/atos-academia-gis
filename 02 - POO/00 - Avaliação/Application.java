@@ -27,7 +27,7 @@ public class Application {
             String plate = sc.next();
 
             // INSTANCIANDO UM OBJETO VEICULO
-            Vehicle vehicle = new Vehicle(plate, model, manufacturer, type);
+            Vehicle vehicle = new Vehicle(type, model, manufacturer, plate);
 
             // INSERINDO O VEÍCULO NA LISTA DE DISPONÍVEIS PARA ESTACIONAR
             parkingLot.add(vehicle);
@@ -63,10 +63,14 @@ public class Application {
 
             System.out.println("Quantas horas o veículo ficou estacionado? ");
             Integer timeParked = sc.nextInt();
-
+            // REMOVENDO O VEÍCULO DO ESTACIONANDO, INSERINDO PARKED = FALSE
+            parkingLot.leave(plateToLeave);
+            // IMPRIMINDO A MENSAGEM FINAL COM TODOS OS DADOS
             parkingLot.printMsg(plateToLeave, timeParked);
 
-
+            // VERIFICANDO SE DESEJA REMOVER OUTRO VEÍCULO
+            System.out.println("Deseja remover outro veículo? S - Sim / N - Não");
+            count = sc.next().charAt(0);
         } while ((count != 'N'));
 
         // ENCERRANDO O OBJETO SCANNER

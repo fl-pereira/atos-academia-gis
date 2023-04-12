@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64116340-4305-40cd-9011-294fe6a6d3f5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vehicle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/ParkingLot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../99 - Avaliação/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Academia GIS - Atos/02 - POO/00 - Avaliação",
+    "last_opened_file_path": "C:/Users/a872975/OneDrive - Atos/Documentos/GitHub/atos-academia-gis/02 - POO/00 - Avaliação",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680803183880</updated>
-      <workItem from="1681211512248" duration="3768000" />
+      <workItem from="1681211512248" duration="14063000" />
     </task>
     <servers />
   </component>

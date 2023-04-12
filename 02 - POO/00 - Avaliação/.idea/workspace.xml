@@ -8,16 +8,35 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ParkingLot.java" beforeDir="false" afterPath="$PROJECT_DIR$/ParkingLot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ParkingLotInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/ParkingLotInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/99 - Avaliação/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/99 - Avaliação/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/99 - Avaliação/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/99 - Avaliação/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/99 - Avaliação/Car.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/99 - Avaliação/Motorcycle.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/99 - Avaliação/ParkingLot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/99 - Avaliação/ParkingLot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/99 - Avaliação/Vehicle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/99 - Avaliação/Vehicle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/99 - Avaliação/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/99 - Avaliação/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/99 - Avaliação.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/Motorcycle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/ParkingLot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/Vehicle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/99 - Avaliação.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/Car.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/Motorcycle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/ParkingLot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/Vehicle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/out/production/99 - Avaliação/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../99 - Avaliação/readme.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +70,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Academia GIS - Atos/02 - POO/00 - Avaliação",
+    "last_opened_file_path": "C:/Users/a872975/OneDrive - Atos/Documentos/GitHub/atos-academia-gis/02 - POO/00 - Avaliação",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
