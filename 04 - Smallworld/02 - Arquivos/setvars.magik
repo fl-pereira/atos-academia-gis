@@ -1,0 +1,377 @@
+#% text_encoding = utf8
+## ##=========================================================================
+##
+## Date (2023/03/21) Developer: Luiz Agnelo
+##        Description: Class that creates shortcuts to help the developer.
+##                     Based on setvars procedure setvars_cst400.magik by GE.
+##	C:\Smallworld434\sw_office_434\common_office\modules\ipa\cs_core_additions\source
+## ##=========================================================================
+_package user
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+def_slotted_exemplar(:dev_shortcuts,
+    {}
+)
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_private _method dev_shortcuts.init(_gather args)
+    >> _self
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method dev_shortcuts.new(_gather args)
+    >> _clone.init(_scatter args)
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method dev_shortcuts.set_procedures_shortcuts()
+    _global ap, w, p, dp, ph, pa
+
+    ap <<
+        _proc@ap(str)
+            >> apropos(str, _true, _true)
+        _endproc
+
+    w <<
+        _proc@w(_gather args)
+            >> write(_scatter args)
+        _endproc
+
+    p <<
+        _proc@p(_gather args)
+            >> print(_scatter args)
+        _endproc
+
+    dp <<
+        _proc@dp(_gather args)
+            >> debug_print(_scatter args)
+        _endproc
+
+    ph <<
+        _proc@ph(object)
+            >> print_hierarchy(object)
+        _endproc
+
+    pa <<
+        _proc@pa(object)
+            >> print_ancestry(object)
+        _endproc
+
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method dev_shortcuts.set_views()
+
+    _global gpm
+    gpm     << gis_program_manager
+
+    _global vace, vtopace, vauth, vstyle, vscratch
+    vace        << gpm.ace_view
+    vtopace     << gpm.ace_top_view
+    vauth       << gpm.authorisation_view
+    vstyle      << gpm.style_view
+    vscratch    << gpm.scratch_view
+
+    _global vcele
+    vcele      << gpm.cached_dataset(:electric_case)
+
+    _global voele
+    voele   << gpm.cached_dataset(:electric)
+    vdlts   << gpm.cached_dataset(:design_layout_tools)
+
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method dev_shortcuts.set_dataset_shortcuts()
+
+    _global dbv, coll, an_element
+
+    # Get the dataset
+    dbv <<
+        _proc@dbv(dataset)
+            >> gis_program_manager.cached_dataset(dataset)
+        _endproc
+
+    # Find a collection named NAME in the optional dataset
+    # Returns the first collection found in any dataset matching NAME
+    coll <<
+        _proc@coll(name, _optional dataset)
+            _if dataset _isnt _unset
+            _then
+                a_dataset << dbv(dataset)
+                _if a_dataset _isnt _unset
+                _then
+                    _return a_dataset.collection(name)
+                _endif
+            _endif
+
+            _for db _over gis_program_manager.databases.fast_elements()
+            _loop
+                _if (a_coll << db.collection(name)) _isnt _unset
+                _then
+                    _return a_coll
+                _endif
+            _endloop
+        _endproc
+
+    # Get an_element from name collection in dataset
+    an_element <<
+        _proc@an_element(name, _optional dataset)
+            _if (a_coll << user:coll(name, dataset)) _isnt _unset
+            _then
+                _return a_coll.an_element()
+            _endif
+        _endproc
+
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method dev_shortcuts.set_map_shortcuts()
+    _global mm, cmap, cmap_view, cmap_trail
+
+    # Returns the map manager
+    mm <<
+        _proc@mm()
+            _if (my_app << user:main_app()) _isnt _unset
+            _then
+                _return my_app.get_service_provider(:map_manager)
+            _endif
+        _endproc
+
+    # Returns the current_map displayed by the map_manager
+    cmap <<
+        _proc@cmap()
+            _if (m << user:mm()) _isnt _unset
+            _then
+                _return m.current_map
+            _endif
+        _endproc
+
+    # Returns the current_map_view of the current_map displayed by
+    # the map_manager plugin
+    cmap_view <<
+        _proc@cmap_view()
+            _if (m << user:mm()) _isnt _unset
+            _then
+                _return m.current_map_view
+            _endif
+        _endproc
+
+
+    # Returns the current_trail
+    cmap_trail <<
+        _proc@cmap_trail()
+            _if (m << user:mm()) _isnt _unset
+            _then
+                _return m.current_trail
+            _endif
+        _endproc
+
+    _global cs, cg, cr
+
+    # Returns the current geometry set
+    cs <<
+        _proc@cs()
+            _if (a_map << user:cmap()) _isnt _unset
+            _then
+                _return a_map.current_selection
+            _endif
+        _endproc
+
+    # Returns the first current_geometry selected
+    cg <<
+        _proc@cg()
+            _if (a_selection << user:cs()) _isnt _unset _andif
+                _not a_selection.empty?
+            _then
+                _return a_selection.an_element()
+            _endif
+        _endproc
+
+    # Returns the owning rwo of the current_geometry
+    cr <<
+        _proc@cr()
+            _if (g << user:cg()) _isnt _unset
+            _then
+                _return g.rwo
+            _endif
+        _endproc
+
+    _global goto, hlight, unhighlight, draw, undraw
+
+    # Go to bounding box, geometry set, geometry, database record or similar.
+    goto <<
+        _proc@goto(spatial_object)
+            _if main_app() _isnt _unset
+            _then
+                main_app().databus.make_data_available(
+                    :goto_request, spatial_object, :dev_shortcuts
+                )
+            _endif
+        _endproc
+
+    # Hightlight a rwo, geometry or geometry set
+    hlight <<
+        _proc@hlight(spatial_object)
+            _if main_app() _isnt _unset
+            _then
+                main_app().databus.make_data_available(
+                    :geometry_to_highlight, spatial_object, :dev_shortcuts
+                )
+            _endif
+        _endproc
+
+    # Unhightlight a rwo, geometry or geometry set
+    unhighlight <<
+        _proc@unhighlight(spatial_object)
+            _if main_app() _isnt _unset
+            _then
+                main_app().databus.make_data_available(
+                    :geometry_to_unhighlight, spatial_object, :dev_shortcuts
+                )
+            _endif
+        _endproc
+
+    # Draw a rwo, geometry or geometry set
+    draw <<
+        _proc@draw(spatial_object, _optional a_colour)
+            _if main_app() _isnt _unset
+            _then
+                main_app().databus.make_data_available(
+                    :geometry_to_draw, {spatial_object, a_colour.default(colour.called(:hotpink))}, :dev_shortcuts
+                )
+            _endif
+        _endproc
+
+    # Undraw a rwo, geometry or geometry set
+    undraw <<
+        _proc@undraw(spatial_object)
+            _if main_app() _isnt _unset
+            _then
+                main_app().databus.make_data_available(
+                    :geometry_to_undraw, {spatial_object}, :dev_shortcuts
+                )
+            _endif
+        _endproc
+
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method dev_shortcuts.set_application_shortcuts()
+    _global app, main_app
+
+    # Get the named application from the smallworld_product
+    app <<
+        _proc@get_application(name)
+            >> smallworld_product.application(name)
+        _endproc
+
+    # Returns the "main" application whih is of class "application"
+    main_app <<
+        _proc@main_app()
+            _for an_app _over smallworld_product.applications.fast_elements()
+            _loop
+                _if _not an_app.is_kind_of?(sw:admin_application) _andif
+                    an_app.application_name _isnt :dev_tools _andif
+                    an_app.application_name _isnt :case_swaf
+                _then
+                    _return an_app
+                _endif
+            _endloop
+        _endproc
+
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method dev_shortcuts.set()
+    dev_shortcuts.set_views()
+    dev_shortcuts.set_procedures_shortcuts()
+    dev_shortcuts.set_dataset_shortcuts()
+    dev_shortcuts.set_map_shortcuts()
+    dev_shortcuts.set_application_shortcuts()
+    dev_shortcuts.set_extras()
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method dev_shortcuts.set_extras()
+
+    _global editor
+
+    editor << 
+	_proc(p_element)
+	    app << smallworld_product.application(:signos_application)
+	    app.plugin(:editor_manager).edit_object(p_element) 
+	_endproc
+    
+_endmethod
+$
+
+_global help <<
+    _proc@help()
+        dev_shortcuts.help()
+    _endproc
+
+_global setvars <<
+    _proc@setvars()
+	!global_auto_declare?! << _true
+	sw!global_auto_declare?! << _true
+        dev_shortcuts.set()
+    _endproc
+
+
+################################################################
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method object.ap(str)
+    ## Function     : Debug shortcut to the apropos method.
+    ## Parameters   : str - A substring to be search for.
+    ## Returns      : Apropos.
+    >> _self.apropos(str, _true, _true)
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method object.p
+    ## Function     : Debug shortcut to the print procedure.
+    ## Parameters   : N/A.
+    ## Returns      : _self.
+    print(_self)
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method object.dp
+    ## Function     : Debug shortcut to the debug_print procedure.
+    ## Parameters   : N/A.
+    ## Returns      : _self.
+    debug_print(_self)
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method object.ph
+    ## Function     : Debug shortcut to the print_hierarchy procedure.
+    ## Parameters   : N/A.
+    ## Returns      : _self.
+    print_hierarchy(_self)
+_endmethod
+$
+
+_pragma(classify_level=debug, topic={custom, setvars})
+_method object.pa
+    ## Function     : Debug shortcut to the print_ancestry procedure.
+    ## Parameters   : N/A.
+    ## Returns      : _self.
+    print_ancestry(_self)
+_endmethod 
+$

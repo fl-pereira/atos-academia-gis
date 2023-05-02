@@ -1,0 +1,83 @@
+
+
+	ELEMENTOS_EO_CORE
+	==================
+	
+	CIRCUITOS:	
+		eo_circuit						Circuit								(EL) Circuito
+
+	SEGMENTOS:	
+		eo_cable						Cable Segment						(AV) Cabo Subterrâneo
+		eo_connector_point				Connector Point						(AV) Conector
+		eo_connector_segment			Connector Segment					(AV) Segmento
+		eo_fiber_optic					Fiber Optic							(AV) Fibra Óptica
+		eo_wire							Wire Segment						(AV) Cabo Aéreo
+				
+	EQUIPAMENTOS:
+		eo_isolating_eqpt				Isolating Equipment					(AV) Equipamento Interrupção
+		eo_isolating_eqpt_controller	Isolating Equipment Controleer		(AV) Controlador de Equipamento Interrupção
+		eo_power_xfrmr					Power Transformer					(AV) Transformador
+		eo_power_xfrmr_controller		Power Transformer Controller		(AV) Controlador de Transformador
+		eo_3w_power_xfrmr				3-Winding Transformer				(AV) Transformador Terciário
+		eo_protective_eqpt				Protective Equipment				(AV) Equipamento Proteção
+		eo_protective_eqpt_controller	Protective Equipment Controller		(AV) Controlador de Equipamento Proteção
+		eo_regulating_eqpt				Regulating Equipment				(AV) Equipamento Regulação
+		eo_regulating_eqpt_controller	Regulating Equipment Controller		(AV) Controlador de Equipamento Regulação
+		eo_composite_switch				Composite Switch					(INS) Equipamento Composto
+		eo_energy_storage				Energy Storage						(CTR) Armazenamento de Energia
+		eo_energy_storage_controller	Energy Storage Controller			(CTR) Controlador de Armaz. Energia
+		eo_equipment_assembly			Equipement Assembly					(INS) Equipamento Associado
+		eo_light						Light								(CNX) Iluminação Pública
+		eo_light_relay					Light Relay							(CNX) Relé de Luz*
+		eo_energy_source				Energy Source						(CNX) Usina
+		eo_energy_consumer				Energy Consumer						(CNX) Consumidor de Energia*
+		eo_service_point				Service Point						(CNX) Ponto Conexão
+		eo_service_connection			Service Connection					(CNX) Relógio*
+		eo_dac							Distribution Automation Controller	(CTR) Controlador Remoto
+		
+	BUILDINGS:
+		eo_building						Building							(EC) Edificação
+		eo_building_floor				Building Floor						(EC) Área de construção*
+		
+	DISTRIBUTION_STRUCTURES:
+		eo_access_point					Access Point						(EC) Ponto de acesso*
+		eo_accurate_point				Accurate Point						(EC) Ponto Subterranea*
+		eo_accurate_route				Accurate Route						(EC) Rota Subterranea
+		ed_cabinet						Cabinet								(EC) Gabinete
+		eo_conduit						Conduit								(EC) Duto
+		ed_crossarm						Cross Arm							(AEC) Cruzeta
+		ed_customer_station				Customer Station					(EC) Estação Customizada*
+		ed_decorative_pole				Decorative Pole						(EC) Poste Decorativo
+		et_structure_node				Distribution Structure Node			(AEC) Nó de AT*
+		et_foreign_attachment			Foreign Attachment					(AEC) Uso Mútuo
+		ed_guy							Guy									(AEC) Estai MT/BT
+		ed_handhole						Handhole							(EC) Alçapão
+		et_insulator					Insulator							(AEC) Isolator AT
+		ed_junction						Junction							(AEC) Junção
+		ed_manhole						Manhole								(EC) Caixa Subterrânea
+		ed_pad							Pad									(EC) Plataforma
+		ed_pedestal						Pedestal							(EC) Pedestal*
+		ed_pit							Pit									(EC) Poço
+		ed_pole							Pole								(EC) Poste
+		ed_pole_structure				Pole Structure						(EC) Estrutura de Postes MT
+		ed_pullbox						Pullbox								(EC) Caixa de Tração*
+		ed_riser						Riser								(AEC) Tubo de Subida*
+		ed_secondary_bus_enclosure		Secondary Bus Enclosure				(AEC) Compartimento de Barramento Secundário*
+		ed_switchgear					Switchgear							(AEC) Painel-Cubículo
+		ed_vault						Vault								(EC) Câmara
+	
+	TRANSMISSION_STRUCTURES:
+		et_antenna						Antenna								(AEC) Antena AT
+		et_counterpoise					Counterpoise						(AEC) Contrapeso AT
+		et_crossarm						Crossarm							(AEC) Cruzeta AT
+		et_crossing						Crossing							(AEC) Cruz*
+		et_foundation					Foundation							(AEC) Fundação AT
+		et_pole_structure				Structure							(EC) Estrutura de Postes AT
+		et_tower						Tower								(EC) Torre AT
+		
+	SUBSTATION:
+		sub_substation					Substation							(EC) Subestação
+		
+		
+		
+		
