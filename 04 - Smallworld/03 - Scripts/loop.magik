@@ -1,0 +1,14 @@
+## loop
+
+## salvando a tabela em uma variável
+tab_pole << gis_program_manager.cached_dataset(:eletric).collection(:ed_pole)
+
+_for a_pole _over tab_pole.fast_elements()
+_loop	 
+	 _if a_pole.id = 73035     
+	 _then
+		_continue
+	 _else		     
+	 	write("Poste ID: ", a_pole.id, " encontrado e")
+	_endif	     
+_endloop

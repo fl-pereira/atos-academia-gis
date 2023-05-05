@@ -1,0 +1,30 @@
+get_max_source_nominal_voltage_pp << _proc @get_max ()
+	 _local l_max_rw << _unset	   
+	 _local l_max_source_nominal_voltage << 0
+	 ## transforma a tabela inteira em uma variável
+	 _local l_collection << gis_program_manager.cached_dataset(:electric).collections [:eo_power_xfrmr_inst]
+	 ## rope é um tipo de lista / coleção
+	 _local l_list << rope.new()
+	 _for a_rwo _over l_coll.fast_elements()
+	 _loop
+		## adiciona cada objeto da collection no final da list
+		l_list.add_last(a_rwo)	    
+	 _endloop   
+	 
+	 _local l_proc << _proc (a,b)
+	 	 	       	  _local l_zero << unit_value.new(0, :KV)
+				  ## >> é _return quando usado dentro da proc
+				  >> a.source_nominal_voltage_pp.default(l_zero).value > 
+				     b.source_nominal_voltage_pp.default(l_zero).value 
+	 	       	  _endproc
+	_if l_list _isnt _unset 
+	_then 
+	      l_max_rwo << l_list.as_sorted_collection(l_proc).an_element()
+	      _if l_max_rwo _isnt _unset 
+	      _then
+			l_max_source_nominal_voltage << l_max_rwo.source_nominal_voltage_pp.convert_to(:V).value		
+	      _endif	
+	_endif	
+	_return l_max_source_nominal_voltage, l_max_rwo		 
+
+_endproc

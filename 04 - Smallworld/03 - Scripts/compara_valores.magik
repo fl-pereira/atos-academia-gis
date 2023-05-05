@@ -1,0 +1,19 @@
+## compara valores por igualdade e identidade
+
+compara_valores << _proc(vl1, _optional vl2)
+	
+	  vl2 << vl2.default("")
+
+	  _if vl1 _is vl2
+	  _then	
+	  	_return	 _true 
+	  _endif 
+
+	  _if vl1 = vl2
+	  _then 
+      	  	_return _true 
+	  _endif 
+
+	  _return  _false 
+
+_endproc  
