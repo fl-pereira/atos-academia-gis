@@ -1,147 +1,15 @@
-#% text_encoding = iso8859_1
-# ************************************************************ 
-#							       
-# (c) 2005-2014 General Electric Company. All Rights Reserved. 
-#							       
-# ************************************************************ 
-
-_package sw
-$
-
-_pragma(classify_level=basic)
-########################################################################
-##
-## This class provides API methods for Electric Office Connector
-## Point Installation objects.  This class should be inherited by
-## all new Connector Point Installation exemplars
-## introduced into the model. 
-##
-########################################################################
-def_slotted_exemplar( :eo_connector_point_inst, {},
-	{
-		:eo_installation
-	})
-$
-
-_pragma(classify_level=basic)
-eo_connector_point_inst.define_shared_constant(
-	##
-	## List of untranslated device type strings that determine if
-	## self should split an underlying segment installation
-	##
-	:device_types_to_split_segment_chains,
-	equality_set.new_with(
-		"Splice",
-		"Termination",
-		"Mains",
-		"Breach"
-		     ),
-	_true)
-$
-
-_pragma(classify_level=basic)
-_method eo_connector_point_inst.splits_segments?
-	##
-	## Returns boolean to determine if self should split an
-	## underlying segment installation
-	##
-	_return _self.device_types_to_split_segment_chains.includes?(
-			_self.untranslated_value_for(:device_type)
-							   )
-_endmethod
-$
-
-_pragma(classify_level=advanced, usage={redefinable})
-_method eo_connector_point_inst.style_subcode_metadata
-	##
-	## Return a property_list of the form key=field name, element=multiplier,
-	## used in the generation of the style_subcode value.
-	##
-	_return property_list.new_with(
-			:device_type, 1000,
-			:status, 1
-			)
-_endmethod
-$
-_pragma(classify_level=advanced, usage={redefinable})
-_method eo_connector_point_inst.treat_unknown_phase_as_any?
-
-	## DESCRIPTION:
-        ## return _true to allow unknown phase to be traced trough as
-        ## any phase
-	## 
-	_return _self.is_lv?
-	
-_endmethod
-$
-_pragma(classify_level=advanced, usage={redefinable})
-_method eo_connector_point_inst.get_candidates_for_phase_and_work_state(a_phase, a_work_state)
-	## Returns the matching records for a_phase and
-	## a_work_state.
-	##
-	## The purpose of this method is to support tracing by phase
-	## and work state
-	## @param a_phase STRING -- This is the external enumeration
-	## string for the phase of interest.
-	## string 
-	## @param a_work_state SYMBOL -- :current or :future
-	## @result candidates ROPE -- A rope of eo_rwo_records for
-	## a_phase, a_work;
-	##
-	## This will be any matching assets of self 
-	##
-	## Candidates with phase "Unknown" are treated as matching
-	## a_phase if candidate.treat_unknown_phase_as_any? is _true   
-	##
-
-	_return _super(eo_installation).get_candidates_for_phase_and_work_state(a_phase, a_work_state, _self.treat_unknown_phase_as_any?)
-_endmethod
-$
-
 _pragma(classify_level=restricted)
-_method eo_connector_point_inst.assets_changed(_optional new_asset_rec, old_asset_rec)
-	##
-	## If an asset has been added or removed or if an existing
-	## asset has had its device_type value updated we need to redo
-	## the manifold interation of our location geometry
-	##
-	_super.assets_changed()
+_method eo_connector_point_inst.get_phase_and_voltage
 
-	new_dt << _if new_asset_rec _isnt _unset
-		  _then
-			  >> new_asset_rec.device_type
-		  _endif
-	old_dt << _if old_asset_rec _isnt _unset
-		  _then
-			  >> old_asset_rec.device_type
-		  _endif
-	
-	_if (
-		    (new_asset_rec _is _unset _or old_asset_rec _is _unset)  _orif
-			    (new_asset_rec _isnt _unset _andif old_asset_rec _isnt _unset _andif new_asset_rec.device_type <> old_asset_rec.device_type)
-	    )
-	_then
-		_if !current_transaction! _isnt _unset
-		_then
-			_if !current_transaction!.transaction_context _is _unset
-			_then
-				!current_transaction!.set_transaction_context(property_list.new())
-			_endif
-			!current_transaction!.transaction_context[:allow_split_with_accurate_route?] << _true
-			!current_transaction!.transaction_context[:accurate_points] << _self.accurate_points()
-		_endif
-		_self.redo_manifold_interaction()
-	_endif
-_endmethod
-$
+	_dynamic !print_float_precision! << 8
 
-_pragma(classify_level=restricted)
-_private _method eo_connector_point_inst.redo_manifold_interaction()
-	
-	_if (my_geom << _self.location) _isnt _unset
-	_then
-		my_geom.undo_manifold_interaction()
-		my_geom.do_manifold_interaction()
-	_endif
+	_local l_network_type << _self.network_type
+	_local l_existing_phasing << _self.existing_phasing
+	_local l_voltage << _self.nominal_voltage_pp.convert_to(:V).value
+
+	_local l_phase_and_voltage << "".concatenation("Tipo de rede: ", l_network_type, " Fase: ", l_existing_phasing, " Voltagem: ", l_voltage.write_string)
+
+	>> l_phase_and_voltage
+
 _endmethod
 $
